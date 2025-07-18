@@ -58,16 +58,6 @@ html, body, .main {
     50% { transform: translateY(-20px); }
 }
 
-/* Glass Card Effect */
-.glass-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 2rem;
-    margin: 1rem 0;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-}
 
 /* Enhanced Message Bubbles */
 .user-msg {
@@ -300,7 +290,7 @@ RULES:
 st.markdown('<div class="glass-card">', unsafe_allow_html=True)
 st.markdown(
     '<h1 class="main-title" style="text-align:center; font-weight:800; font-size:2.8rem; margin-bottom:10px;">Fakhim-AI 👑🔥</h1>'
-    '<p style="text-align:center; margin-top:-14px; font-size:1.2rem; color:#fff; font-weight:500;">The Savage Assistant</p>'
+    '<p style="text-align:center; margin-top:-14px; font-size:1.2rem; color:#fff; font-weight:500;">The ULTIMATE Savage Assistant</p>'
     '<div class="status-badge" style="text-align:center; margin:20px auto; width:fit-content;">🔥 ROAST MODE: ON 🔥</div>'
     '<div class="roast-meter"></div>'
     '<p style="text-align:center; font-size:0.9rem; color:rgba(255,255,255,0.8); margin-top:10px;">⚠️ Zero patience for basic questions ⚠️</p>',
@@ -344,7 +334,7 @@ with st.form(key="input_form", clear_on_submit=True):
     
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        sent = st.form_submit_button("🔥 Get Roasted", use_container_width=True)
+        sent = st.form_submit_button("🔥 Get Roasted by Fakhim", use_container_width=True)
 
 # Simple greetings
 SIMPLE_QUERIES = ["hi", "hello", "hey", "yo", "sup", "hola", "greetings"]
