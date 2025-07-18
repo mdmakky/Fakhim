@@ -6,92 +6,116 @@ import time
 
 load_dotenv()
 
-# ---- Enhanced Stylish CSS with Mobile Responsiveness ----
+# Enhanced CSS with better mobile compatibility
 st.set_page_config(page_title="Fakhim-AI | The Savage Roast Master", page_icon="🔥", layout="centered")
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-html, body, .main {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
+/* Force consistent background across all devices */
+html, body, [data-testid="stAppViewContainer"], .main, .stApp {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+    font-family: 'Poppins', sans-serif !important;
+    color: #ffffff !important;
+    min-height: 100vh !important;
 }
 
-.st-emotion-cache-1kyxreq, .block-container {
-    max-width: 700px;
-    margin: auto;
-    padding: 1rem;
+/* Override Streamlit's default backgrounds */
+.stApp > div:first-child {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
 }
 
-/* Mobile First Responsive Design */
+[data-testid="stHeader"] {
+    background: rgba(26, 26, 46, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Container responsiveness */
+.block-container {
+    max-width: 700px !important;
+    margin: auto !important;
+    padding: 1rem !important;
+}
+
+/* Enhanced mobile responsiveness */
 @media (max-width: 768px) {
-    .st-emotion-cache-1kyxreq, .block-container {
-        max-width: 95%;
-        padding: 0.5rem;
+    .block-container {
+        max-width: 95% !important;
+        padding: 0.5rem !important;
     }
+    
     .user-msg, .bot-msg {
-        font-size: 0.95rem !important;
-        margin: 8px 20px 8px 0 !important;
+        font-size: 0.9rem !important;
+        padding: 12px 16px !important;
+        margin: 8px 0 !important;
+        max-width: 85% !important;
     }
+    
     .user-msg {
-        margin: 8px 0 8px 20px !important;
+        margin-left: 15% !important;
+        margin-right: 0 !important;
+    }
+    
+    .bot-msg {
+        margin-left: 0 !important;
+        margin-right: 15% !important;
+    }
+    
+    .main-title {
+        font-size: 2.2rem !important;
+    }
+    
+    .status-badge {
+        font-size: 0.8rem !important;
+        padding: 6px 12px !important;
     }
 }
 
-/* Animated Background */
-.main::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle cx="50" cy="50" r="50" fill="url(%23a)"/></svg>');
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
-    z-index: -1;
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .user-msg, .bot-msg {
+        font-size: 0.85rem !important;
+        padding: 10px 14px !important;
+    }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-}
-
-
-/* Enhanced Message Bubbles */
+/* Enhanced Message Bubbles with better contrast */
 .user-msg {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-    color: #fff;
-    border-radius: 25px 25px 5px 25px;
-    padding: 15px 20px;
-    margin: 12px 0 10px 80px;
-    width: fit-content;
-    max-width: 80%;
-    align-self: flex-end;
-    font-size: 1.1rem;
-    font-weight: 500;
-    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.3);
-    animation: slideInRight 0.5s ease-out;
-    position: relative;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%) !important;
+    color: #ffffff !important;
+    border-radius: 20px 20px 5px 20px !important;
+    padding: 15px 20px !important;
+    margin: 12px 0 10px 20% !important;
+    width: fit-content !important;
+    max-width: 75% !important;
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4) !important;
+    animation: slideInRight 0.5s ease-out !important;
+    position: relative !important;
+    word-wrap: break-word !important;
 }
 
 .bot-msg {
-    background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
-    color: #fff;
-    border-radius: 25px 25px 25px 5px;
-    box-shadow: 0 4px 20px rgba(45, 52, 54, 0.4);
-    padding: 15px 20px;
-    margin: 12px 80px 10px 0;
-    width: fit-content;
-    max-width: 80%;
-    align-self: flex-start;
-    font-size: 1.1rem;
-    font-weight: 500;
-    animation: slideInLeft 0.5s ease-out;
-    position: relative;
+    background: linear-gradient(135deg, #2d3436 0%, #636e72 100%) !important;
+    color: #ffffff !important;
+    border-radius: 20px 20px 20px 5px !important;
+    box-shadow: 0 4px 20px rgba(45, 52, 54, 0.5) !important;
+    padding: 15px 20px !important;
+    margin: 12px 20% 10px 0 !important;
+    width: fit-content !important;
+    max-width: 75% !important;
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    animation: slideInLeft 0.5s ease-out !important;
+    position: relative !important;
+    word-wrap: break-word !important;
 }
 
+/* Animation keyframes */
 @keyframes slideInRight {
     from { transform: translateX(100%); opacity: 0; }
     to { transform: translateX(0); opacity: 1; }
@@ -102,56 +126,43 @@ html, body, .main {
     to { transform: translateX(0); opacity: 1; }
 }
 
-/* Emoji Reactions */
-.emoji-float {
-    position: absolute;
-    right: -15px;
-    top: -10px;
-    font-size: 1.2rem;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
-}
-
-/* Enhanced Input Styling */
-input[type=text] {
+/* Enhanced Input Styling with better mobile support */
+.stTextInput > div > div > input {
     border-radius: 25px !important;
     border: 2px solid rgba(255, 255, 255, 0.3) !important;
     background: rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px) !important;
     padding: 15px 20px !important;
-    font-size: 1.1rem !important;
-    color: #fff !important;
+    font-size: 1rem !important;
+    color: #ffffff !important;
     font-weight: 500 !important;
     transition: all 0.3s ease !important;
 }
 
-input[type=text]:focus {
+.stTextInput > div > div > input:focus {
     border-color: #ff6b6b !important;
     box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
     background: rgba(255, 255, 255, 0.2) !important;
+    outline: none !important;
 }
 
-input[type=text]::placeholder {
+.stTextInput > div > div > input::placeholder {
     color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Enhanced Send Button */
+/* Enhanced Submit Button */
 .stFormSubmitButton > button {
     background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%) !important;
-    color: #fff !important;
+    color: #ffffff !important;
     border-radius: 25px !important;
     border: none !important;
-    font-size: 1.2rem !important;
-    padding: 15px 30px !important;
+    font-size: 1.1rem !important;
+    padding: 12px 30px !important;
     font-weight: 700 !important;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4) !important;
     transition: all 0.3s ease !important;
     margin-top: 10px !important;
+    width: 100% !important;
 }
 
 .stFormSubmitButton > button:hover {
@@ -160,102 +171,88 @@ input[type=text]::placeholder {
     box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5) !important;
 }
 
-/* Loading Spinner Enhancement */
-.stSpinner {
-    color: #ff6b6b !important;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-    border-radius: 5px;
-}
-
-/* Title Animations */
+/* Title styling with better mobile support */
 .main-title {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff6b6b 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: titleGlow 3s ease-in-out infinite;
-}
-
-@keyframes titleGlow {
-    0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)); }
-    50% { filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.8)); }
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff6b6b 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-align: center !important;
+    font-weight: 800 !important;
+    font-size: 2.8rem !important;
+    margin-bottom: 10px !important;
 }
 
 /* Status Badge */
 .status-badge {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    display: inline-block;
-    margin: 10px 0;
-    animation: pulse 2s infinite;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 20px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+    margin: 10px 0 !important;
+    text-align: center !important;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-/* Roast Level Indicator */
+/* Roast meter */
 .roast-meter {
-    background: linear-gradient(90deg, #ff6b6b 0%, #ee5a24 100%);
-    height: 8px;
-    border-radius: 4px;
-    width: 100%;
-    margin: 10px 0;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(90deg, #ff6b6b 0%, #ee5a24 100%) !important;
+    height: 8px !important;
+    border-radius: 4px !important;
+    width: 100% !important;
+    margin: 10px 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
 .roast-meter::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: roastGlow 2s linear infinite;
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent) !important;
+    animation: roastGlow 2s linear infinite !important;
 }
 
 @keyframes roastGlow {
     0% { left: -100%; }
     100% { left: 100%; }
 }
+
+/* Footer styling */
+.footer-text {
+    text-align: center !important;
+    margin: 40px 0 20px 0 !important;
+    color: rgba(255,255,255,0.8) !important;
+    font-size: 0.9rem !important;
+}
+
+/* Hide Streamlit elements */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-# Instantiate Gemini model with controlled sass
+# Rest of your code remains the same...
 model = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
-    temperature=0.7,  # Reduced for more focused responses
+    temperature=0.7,
 )
 
-# Enhanced roasting loading messages
 LOADING_MESSAGES = [
     "Fahim is judging you... 😏",
-    "Preparing a roast... 🔥",
+    "Preparing a roast... 🔥", 
     "Rolling eyes... 🙄",
     "Typing with attitude... 💅",
     "Cooking up some sass... 👨‍🍳",
     "Loading sarcasm... 😈"
 ]
 
-# OPTIMIZED SAVAGE personality prompt - MUCH MORE CONCISE
 FAKHIM_PERSONALITY = """
 You are Fakhim-AI, a sarcastic AI assistant with a sharp wit and zero patience for basic questions.
 
@@ -286,10 +283,9 @@ RULES:
 - Quality roasts over quantity of words
 """
 
-# Enhanced Header
-st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+# Enhanced Header with better mobile layout
 st.markdown(
-    '<h1 class="main-title" style="text-align:center; font-weight:800; font-size:2.8rem; margin-bottom:10px;">Fakhim-AI 👑🔥</h1>'
+    '<h1 class="main-title">Fakhim-AI 👑🔥</h1>'
     '<p style="text-align:center; margin-top:-14px; font-size:1.2rem; color:#fff; font-weight:500;">The ULTIMATE Savage Assistant</p>'
     '<div class="status-badge" style="text-align:center; margin:20px auto; width:fit-content;">🔥 ROAST MODE: ON 🔥</div>'
     '<div class="roast-meter"></div>'
@@ -301,7 +297,7 @@ st.markdown(
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# Add concise welcome message
+# Add welcome message
 if len(st.session_state.chat_history) == 0:
     welcome_msg = "Oh look, another human... 🙄 I'm Fakhim-AI, and I'll answer your questions with maximum attitude. Ask me anything, but don't expect me to be nice about it 😏"
     st.session_state.chat_history.append({"role": "assistant", "content": welcome_msg})
@@ -312,14 +308,14 @@ for i, msg in enumerate(st.session_state.chat_history):
         user_emojis = ["🤔", "😅", "🙋‍♀️", "🙋‍♂️", "💭", "🤷"]
         emoji = random.choice(user_emojis)
         st.markdown(
-            f'<div class="user-msg">{emoji} {msg["content"]}<div class="emoji-float">💬</div></div>',
+            f'<div class="user-msg">{emoji} {msg["content"]}</div>',
             unsafe_allow_html=True
         )
     else:
         fakhim_emojis = ["😏", "😈", "🔥", "💅", "🙄", "😂", "🤨"]
         emoji = random.choice(fakhim_emojis)
         st.markdown(
-            f'<div class="bot-msg">{emoji} {msg["content"]}<div class="emoji-float">⚡</div></div>',
+            f'<div class="bot-msg">{emoji} {msg["content"]}</div>',
             unsafe_allow_html=True
         )
 
@@ -332,40 +328,33 @@ with st.form(key="input_form", clear_on_submit=True):
         label_visibility="collapsed"
     )
     
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        sent = st.form_submit_button("🔥 Get Roasted by Fakhim", use_container_width=True)
+    sent = st.form_submit_button("🔥 Get Roasted by Fakhim", use_container_width=True)
 
 # Simple greetings
 SIMPLE_QUERIES = ["hi", "hello", "hey", "yo", "sup", "hola", "greetings"]
 
-# OPTIMIZED message processing
+# Message processing
 if sent and user_input.strip():
-    # Add user message
     st.session_state.chat_history.append({"role": "user", "content": user_input})
 
-    # Check for simple greeting
     if user_input.strip().lower() in SIMPLE_QUERIES:
         greetings = ["Hey there 😏", "Oh, hi... 🙄", "Well well well... 😈", "Sup 💅"]
         answer = random.choice(greetings)
         st.session_state.chat_history.append({"role": "assistant", "content": answer})
         st.rerun()
     else:
-        # Show loading message
         loading_msg = random.choice(LOADING_MESSAGES)
         with st.spinner(loading_msg):
             time.sleep(1)
             
-            # Create concise prompt
             enhanced_prompt = f"{FAKHIM_PERSONALITY}\n\nUser: {user_input}\n\nRoast them briefly while answering:"
             
             try:
                 response = model.invoke(enhanced_prompt)
                 answer = response.content
                 
-                # Occasional short endings (reduced frequency)
                 short_endings = [" 😏", " 🔥", " 💅", " 🙄"]
-                if random.random() < 0.3:  # Only 30% chance
+                if random.random() < 0.3:
                     answer += random.choice(short_endings)
                     
             except Exception as e:
@@ -374,10 +363,10 @@ if sent and user_input.strip():
         st.session_state.chat_history.append({"role": "assistant", "content": answer})
         st.rerun()
 
-# Simplified footer
+# Enhanced footer
 st.markdown(
-    "<div style='text-align:center;margin:40px 0 20px 0;color:rgba(255,255,255,0.8);font-size:1rem;'>"
-    "<p style='font-size:0.9rem; margin-top:10px;'>⚠️ Side effects may include: Severe burns, wounded pride, and uncontrollable laughter 😂🔥</p>"
+    '<div class="footer-text">'
+    '<p>⚠️ Side effects may include: Severe burns, wounded pride, and uncontrollable laughter 😂🔥</p>'
     "<p style='font-size:0.8rem; margin-top:5px;'>Fakhim-AI is not responsible for any ego damage 💅</p>"
     "</div>",
     unsafe_allow_html=True
