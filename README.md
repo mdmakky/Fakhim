@@ -231,7 +231,7 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 
 ## 📞 Contact
 
-- **GitHub:** [@yourusername](https://github.com/mdmakky)
+- **GitHub:** [mdmakky](https://github.com/mdmakky)
 - **Email:** makky.cse@gmail.com
 <!-- - **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/yourprofile) -->
 
