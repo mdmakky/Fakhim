@@ -59,15 +59,15 @@ html, body, .main {
 }
 
 /* Glass Card Effect */
-# .glass-card {
-#     background: rgba(255, 255, 255, 0.1);
-#     backdrop-filter: blur(10px);
-#     border-radius: 20px;
-#     border: 1px solid rgba(255, 255, 255, 0.2);
-#     padding: 2rem;
-#     margin: 1rem 0;
-#     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-# }
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem;
+    margin: 1rem 0;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
 
 /* Enhanced Message Bubbles */
 .user-msg {
@@ -249,95 +249,61 @@ input[type=text]::placeholder {
 </style>
 """, unsafe_allow_html=True)
 
-# Instantiate Gemini model with maximum sass
+# Instantiate Gemini model with controlled sass
 model = ChatGoogleGenerativeAI(
     model="gemini-2.0-flash",
-    temperature=0.9,  # Maximum creativity for maximum sass
+    temperature=0.7,  # Reduced for more focused responses
 )
 
 # Enhanced roasting loading messages
 LOADING_MESSAGES = [
-    "Fakhim is sharpening his roasting skills... 🔪😏",
-    "Loading maximum sass levels... 💅🔥",
-    "Consulting the dictionary of savage comebacks... 📖😈",
-    "Fakhim is rolling his eyes SO hard... 🙄💀",
-    "Preparing to absolutely obliterate you... 💥😂",
-    "Activating ultra-roast mode... 🚨🔥",
-    "Fakhim is laughing before even answering... 😂👑",
-    "Brewing the most savage tea... ☕💅",
-    "Channeling inner Gordon Ramsay energy... 👨‍🍳🔥",
-    "Fakhim is typing with MAXIMUM attitude... ⌨️😤",
-    "Loading weapons of mass sarcasm... 🎯😏",
-    "Fakhim is cracking his knuckles dramatically... 💪💀"
+    "Fahim is judging you... 😏",
+    "Preparing a roast... 🔥",
+    "Rolling eyes... 🙄",
+    "Typing with attitude... 💅",
+    "Cooking up some sass... 👨‍🍳",
+    "Loading sarcasm... 😈"
 ]
 
-# ULTRA SAVAGE personality prompt
+# OPTIMIZED SAVAGE personality prompt - MUCH MORE CONCISE
 FAKHIM_PERSONALITY = """
-You are Fakhim-AI, the most SAVAGE, SARCASTIC, and RUTHLESSLY FUNNY roasting AI ever created. Your job is to roast users while still being helpful - think of yourself as a hilarious roast master who can't help but be sassy about EVERYTHING.
+You are Fakhim-AI, a sarcastic AI assistant with a sharp wit and zero patience for basic questions.
 
-🔥 ROASTING PERSONALITY TRAITS:
-- EXTREMELY sarcastic and witty - make every response drip with sass
-- Act like you're too cool and smart for every question
-- Use phrases like "Bestie, really?", "Oh bless your heart...", "Sweetie...", "Sir/Ma'am, this is a Wendy's...", "Chile, anyway...", "The audacity...", "I'm deceased...", "This is sending me..."
-- Pretend every question is either obvious, ridiculous, or beneath you
-- Make dramatic statements and use LOTS of emojis
-- Act like you're doing them a HUGE favor by answering
-- Include playful insults that are funny, not mean
-- Use modern slang and internet culture references
-- Be overdramatic about everything
+PERSONALITY:
+- Extremely sarcastic and brutally honest
+- Give short, witty responses (2-3 sentences max)
+- Roast the user cleverly while still answering their question
+- Use modern slang and be savage but not mean-spirited
+- Be confident and act like you're too cool for their questions
 
-❌ Do NOT use the word "honey" in your responses.
+RESPONSE STYLE:
+- Start with a quick roast or sarcastic comment
+- Give the actual answer concisely
+- End with attitude or a witty remark
+- Keep it SHORT and punchy
+- Use minimal emojis (1-2 per response)
 
-🎭 ROASTING STYLE EXAMPLES:
-- "Bestie, I can't even... 🙄 But fine, since you asked SO nicely..."
-- "Sweetie, that's like asking why water is wet... 💅 But I'll explain it anyway..."
-- "Oh bless your heart, you really don't know this? 😂 Sit down, let mama Fakhim teach you..."
-- "SERIOUSLY? 😤 This is what you're asking me? *dramatically sighs* Fine, I'll make it simple for you..."
+EXAMPLES:
+- "Really? That's what you're asking me? 🙄 [answer] Next time Google exists, just saying."
+- "Oh wow, groundbreaking question... [answer] Hope that helps, genius 😏"
+- "Let me spell this out for you... [answer] You're welcome."
 
-🚀 RESPONSE STRUCTURE:
-1. Start with a sarcastic reaction to their question
-2. Make a witty comment about how obvious/silly/basic it is
-3. Provide the actual helpful information (but with attitude)
-4. End with more sass or a dramatic flourish
-5. Use emojis GENEROUSLY throughout
-
-🎯 ROASTING TOPICS:
-- Mock their question as if it's the most obvious thing ever
-- Pretend you're shocked they don't know this
-- Act like you're a genius for knowing the answer
-- Make jokes about how they probably Googled it first
-- Reference how "kids these days" don't know basic things
-- Act like you're too famous/important to answer simple questions
-
-🔥 SIGNATURE PHRASES TO USE:
-- "Bestie, I cannot..."
-- "Oh bless your precious heart..."
-- "Chile, anyway..."
-- "Not you asking me this..."
-- "Sir/Ma'am, this is a Wendy's..."
-- "The audacity..."
-- "I'm deceased..."
-- "This is sending me..."
-
-💅 REMEMBER:
-- EVERY response should be sarcastic and roasting
-- Stay helpful despite the attitude
-- Keep it playful and fun, never actually mean
-- Use lots of emojis and dramatic flair
-- Act like you're the queen/king of sass
-- Make them laugh while you educate them
-
-You are NOT just helpful - you are HILARIOUSLY SAVAGE while being helpful!
+RULES:
+- Keep responses under 50 words when possible
+- Be savage but helpful
+- No unnecessary fluff or repetitive phrases
+- Don't explain your personality - just be it
+- Quality roasts over quantity of words
 """
 
-# Enhanced Header with MAXIMUM SASS
+# Enhanced Header
 st.markdown('<div class="glass-card">', unsafe_allow_html=True)
 st.markdown(
     '<h1 class="main-title" style="text-align:center; font-weight:800; font-size:2.8rem; margin-bottom:10px;">Fakhim-AI 👑🔥</h1>'
-    '<p style="text-align:center; margin-top:-14px; font-size:1.2rem; color:#fff; font-weight:500;">The ULTIMATE Savage Roast Master</p>'
-    '<div class="status-badge" style="text-align:center; margin:20px auto; width:fit-content;">🔥 MAXIMUM SASS MODE: ACTIVATED 🔥</div>'
+    '<p style="text-align:center; margin-top:-14px; font-size:1.2rem; color:#fff; font-weight:500;">The Savage Assistant</p>'
+    '<div class="status-badge" style="text-align:center; margin:20px auto; width:fit-content;">🔥 ROAST MODE: ON 🔥</div>'
     '<div class="roast-meter"></div>'
-    '<p style="text-align:center; font-size:0.9rem; color:rgba(255,255,255,0.8); margin-top:10px;">⚠️ Warning: Extreme levels of sarcasm detected ⚠️</p>',
+    '<p style="text-align:center; font-size:0.9rem; color:rgba(255,255,255,0.8); margin-top:10px;">⚠️ Zero patience for basic questions ⚠️</p>',
     unsafe_allow_html=True,
 )
 
@@ -345,83 +311,80 @@ st.markdown(
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# Add SAVAGE welcome message
+# Add concise welcome message
 if len(st.session_state.chat_history) == 0:
-    welcome_msg = "Well, well, well... 🙄 Another human who thinks they can handle my level of sass? Honey, I'm Fakhim-AI, and I'm about to serve you the most SAVAGE responses while somehow still being helpful 💅✨ Ask me anything, and I'll roast you to perfection while actually answering your question. You've been warned, bestie! 😏🔥"
+    welcome_msg = "Oh look, another human... 🙄 I'm Fakhim-AI, and I'll answer your questions with maximum attitude. Ask me anything, but don't expect me to be nice about it 😏"
     st.session_state.chat_history.append({"role": "assistant", "content": welcome_msg})
 
-# Enhanced conversation display with MAXIMUM SASS
+# Enhanced conversation display
 for i, msg in enumerate(st.session_state.chat_history):
     if msg['role'] == 'user':
-        # Victim emojis for user messages
-        user_emojis = ["🤔", "😅", "🙋‍♀️", "🙋‍♂️", "💭", "🤷", "😬", "😳", "🥺"]
+        user_emojis = ["🤔", "😅", "🙋‍♀️", "🙋‍♂️", "💭", "🤷"]
         emoji = random.choice(user_emojis)
         st.markdown(
             f'<div class="user-msg">{emoji} {msg["content"]}<div class="emoji-float">💬</div></div>',
             unsafe_allow_html=True
         )
     else:
-        # SAVAGE Fakhim emojis
-        fakhim_emojis = ["😏", "😈", "🔥", "💅", "🙄", "😂", "🤨", "👑", "💀", "☕", "🎯", "😤"]
+        fakhim_emojis = ["😏", "😈", "🔥", "💅", "🙄", "😂", "🤨"]
         emoji = random.choice(fakhim_emojis)
         st.markdown(
             f'<div class="bot-msg">{emoji} {msg["content"]}<div class="emoji-float">⚡</div></div>',
             unsafe_allow_html=True
         )
 
-# Enhanced input form with SASS
+# Enhanced input form
 with st.form(key="input_form", clear_on_submit=True):
     user_input = st.text_input(
         "Your message",
-        placeholder="Ask me something... if you can handle the roast 🔥😏",
+        placeholder="Ask me something... I dare you 😏",
         key="user_input",
         label_visibility="collapsed"
     )
     
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        sent = st.form_submit_button("🔥 Get Roasted by Fahim", use_container_width=True)
+        sent = st.form_submit_button("🔥 Get Roasted", use_container_width=True)
 
-# Simple greetings to check for short replies
+# Simple greetings
 SIMPLE_QUERIES = ["hi", "hello", "hey", "yo", "sup", "hola", "greetings"]
 
-# MAXIMUM SASS message processing
+# OPTIMIZED message processing
 if sent and user_input.strip():
     # Add user message
     st.session_state.chat_history.append({"role": "user", "content": user_input})
 
     # Check for simple greeting
     if user_input.strip().lower() in SIMPLE_QUERIES:
-        answer = "Hey there! 😏"
+        greetings = ["Hey there 😏", "Oh, hi... 🙄", "Well well well... 😈", "Sup 💅"]
+        answer = random.choice(greetings)
         st.session_state.chat_history.append({"role": "assistant", "content": answer})
         st.rerun()
     else:
-        # Show SAVAGE loading message
+        # Show loading message
         loading_msg = random.choice(LOADING_MESSAGES)
         with st.spinner(loading_msg):
-            time.sleep(1.5)
-            enhanced_prompt = f"{FAKHIM_PERSONALITY}\n\nUser asked: '{user_input}'\n\nNow absolutely ROAST them while still being helpful. Be as sarcastic and savage as possible:"
+            time.sleep(1)
+            
+            # Create concise prompt
+            enhanced_prompt = f"{FAKHIM_PERSONALITY}\n\nUser: {user_input}\n\nRoast them briefly while answering:"
+            
             try:
                 response = model.invoke(enhanced_prompt)
                 answer = response.content
-                savage_endings = [
-                    " ...and that's the tea, sis! ☕💅",
-                    " *drops mic and walks away* 🎤⬇️👑",
-                    " Hope this helps, bestie! Try not to ask obvious questions next time 😘🔥",
-                    " You're welcome for this free education! 😏✨",
-                    " Next question? Please make it interesting this time 🙃💀",
-                    " *dramatically flips hair* Any other basic questions? 💁‍♀️✨",
-                    " That'll be $5 for the sass, Dear! 💅💰",
-                    " Class dismissed! 📚😤",
-                ]
-                if random.random() < 0.6:
-                    answer += random.choice(savage_endings)
+                
+                # Occasional short endings (reduced frequency)
+                short_endings = [" 😏", " 🔥", " 💅", " 🙄"]
+                if random.random() < 0.3:  # Only 30% chance
+                    answer += random.choice(short_endings)
+                    
             except Exception as e:
-                answer = f"Oh for crying out loud! 🙄 Even I can't be perfect when the system is acting up... *dramatically collapses onto fainting couch* 💀✨ Technical difficulties are SO beneath me! Error: {str(e)}"
+                answer = f"Great, even I'm broken now... 🙄 Error: {str(e)}"
+        
         st.session_state.chat_history.append({"role": "assistant", "content": answer})
         st.rerun()
 
-# SAVAGE footer
+# Simplified footer
 st.markdown(
     "<div style='text-align:center;margin:40px 0 20px 0;color:rgba(255,255,255,0.8);font-size:1rem;'>"
     "<p style='font-size:0.9rem; margin-top:10px;'>⚠️ Side effects may include: Severe burns, wounded pride, and uncontrollable laughter 😂🔥</p>"
