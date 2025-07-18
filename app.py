@@ -39,6 +39,16 @@ html, body, [data-testid="stAppViewContainer"], .main, .stApp {
 
 /* Enhanced mobile responsiveness */
 @media (max-width: 768px) {
+     .stTextInput > div > div > input {
+        font-size: 16px !important; /* Prevents zoom on iOS */
+        background: rgba(45, 52, 54, 0.9) !important;
+        border: 2px solid rgba(255, 107, 107, 0.6) !important;
+    }
+    
+    .stTextInput > div > div > input::placeholder {
+        color: rgba(255, 255, 255, 0.9) !important;
+        font-size: 14px !important;
+    }
     .block-container {
         max-width: 95% !important;
         padding: 0.5rem !important;
@@ -114,6 +124,10 @@ html, body, [data-testid="stAppViewContainer"], .main, .stApp {
     position: relative !important;
     word-wrap: break-word !important;
 }
+.stTextInput input[type="text"] {
+    background-color: rgba(45, 52, 54, 0.8) !important;
+    color: #ffffff !important;
+}
 
 /* Animation keyframes */
 @keyframes slideInRight {
@@ -126,28 +140,30 @@ html, body, [data-testid="stAppViewContainer"], .main, .stApp {
     to { transform: translateX(0); opacity: 1; }
 }
 
-/* Enhanced Input Styling with better mobile support */
+/* Enhanced Input Styling - Mobile Fix */
 .stTextInput > div > div > input {
     border-radius: 25px !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
+    border: 2px solid rgba(255, 107, 107, 0.5) !important;
+    background: rgba(45, 52, 54, 0.8) !important;
     backdrop-filter: blur(10px) !important;
     padding: 15px 20px !important;
     font-size: 1rem !important;
     color: #ffffff !important;
     font-weight: 500 !important;
     transition: all 0.3s ease !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
 }
 
 .stTextInput > div > div > input:focus {
     border-color: #ff6b6b !important;
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.3) !important;
-    background: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.4) !important;
+    background: rgba(45, 52, 54, 0.9) !important;
     outline: none !important;
 }
 
 .stTextInput > div > div > input::placeholder {
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-weight: 400 !important;
 }
 
 /* Enhanced Submit Button */
