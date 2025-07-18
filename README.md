@@ -19,7 +19,7 @@ Fakhim-AI is a hilariously savage conversational AI assistant that combines help
 
 ## 🚀 Live Demo
 
-**Try Fakhim-AI here:** [Your-App-URL-Here]
+**Try Fakhim-AI here:** https://fakhim.streamlit.app/
 
 *Warning: May cause uncontrollable laughter and slight ego damage* 😂
 
@@ -77,7 +77,7 @@ Fakhim-AI is a hilariously savage conversational AI assistant that combines help
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/fakhim-ai.git
+git clone https://github.com/mdmakky/Fakhim.git
 cd fakhim-ai
 
 # 2. Install dependencies
@@ -156,10 +156,10 @@ GOOGLE_API_KEY=your-google-api-key-here
 
 ## 🎨 Screenshots
 
-![Fakhim-AI Interface](screenshot1.png)
-*The savage welcome message*
+<!-- ![Fakhim-AI Interface](screenshot1.png)
+*The savage welcome message* -->
 
-![Chat Interface](screenshot2.png)
+![Chat Interface](screenshot1.png)
 *Fakhim-AI in action*
 
 ---
@@ -231,9 +231,9 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 
 ## 📞 Contact
 
-- **GitHub:** [@yourusername](https://github.com/yourusername)
-- **Email:** your.email@example.com
-- **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
+- **GitHub:** [@yourusername](https://github.com/mdmakky)
+- **Email:** makky.cse@gmail.com
+<!-- - **LinkedIn:** [Your LinkedIn Profile](https://linkedin.com/in/yourprofile) -->
 
 ---
 
